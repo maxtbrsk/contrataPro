@@ -29,6 +29,10 @@ async function insertEndereco(endereco, usuarioId, conexao) {
 
 //ROTAS
 
+app.get("/", (req,res ) => {
+  res.send("ContrataPRO API")
+})
+
 app.post("/registerCliente", async (req, res) => {
   const dados = req.body;
   const usuario = {
