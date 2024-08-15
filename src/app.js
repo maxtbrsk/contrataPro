@@ -1,7 +1,7 @@
 import express from "express";
 import conexao from "./app/database/conexao.js";
 import jwt from 'jsonwebtoken'; 
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs'
 
 
 const app = express();
