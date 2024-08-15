@@ -79,7 +79,7 @@ app.post("/registerCliente", async (req, res) => {
       console.log(idUsuario);
       // Insere o endereço
       await insertEndereco(endereco, idUsuario, conexao);
-
+      const token = await generateJWT(idUsuario, 'perola');
       // Faz o commit da transação
       conexao.commit((err) => {
         if (err) {
@@ -87,7 +87,7 @@ app.post("/registerCliente", async (req, res) => {
             res.status(500).json({ erro: "Erro ao fazer commit da transação." });
           });
         }
-        res.status(201).json({ mensagem: "Usuário registrado com sucesso." });
+        res.status(201).json({ mensagem: "Usuário registrado com sucesso.", token });
       });
     } catch (erro) {
       // Faz rollback em caso de erro
@@ -152,7 +152,7 @@ app.post("/registerPrestador", async (req, res) => {
             }
 
             await insertEndereco(endereco, idUsuario, conexao);
-
+            const token = await generateJWT(idUsuario, 'perola');
             // Commit da transação
             conexao.commit((err) => {
               if (err) {
@@ -164,6 +164,7 @@ app.post("/registerPrestador", async (req, res) => {
               }
               res.status(201).json({
                 mensagem: "Usuário Prestador registrado com sucesso.",
+                token
               });
             });
           }
