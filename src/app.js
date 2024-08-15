@@ -1,10 +1,11 @@
 import express from "express";
 import conexao from "./app/database/conexao.js";
 import jwt from 'jsonwebtoken'; 
-import bcrypt from 'bcryptjs'
-
+import bcrypt from 'bcryptjs';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 
