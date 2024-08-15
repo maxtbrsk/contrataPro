@@ -38,7 +38,7 @@ app.post("/registerCliente", async (req, res) => {
   }
   const endereco = {
     rua: dados.rua,
-    numero: dados.rua,
+    numero: dados.numero,
     complemento: dados.complemento,
     bairro: dados.bairro,
     cidade: dados.cidade
